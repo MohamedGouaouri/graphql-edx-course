@@ -15,6 +15,7 @@ the first one Person and the second is Post.
   type Post{
     title: String!
     content: String!
+    author: Person!
   }
 ```
 
@@ -82,4 +83,42 @@ type of API architecture is called event-driven architecture
 ```
 
 ## Defining a schema
+In order to be able to query the server, the client and server
+must agree on the schema of data and queries.
 
+### Defining a Query
+```
+  type Query {
+    allPersons: [Person!]!
+    allPersons(last: Int): [Person!]!
+    getPerson (id: Int): Person!
+  }
+
+```
+With that the graphql server would be able to serve
+any of query that matches one of the above schema
+
+### Definin a Mutation
+We can define mutations similarly to query definition
+
+```
+  type Mutation{
+    createPerson (name: String!, age: Int!): Person!
+    createPost (title: String!, content: String!, author: Person!): Post!
+
+  }
+
+```
+
+### Defining Subsciption:
+Finally subscription definition
+
+```
+  type Subscription{
+    newPerson: Person!
+    newPost: Post!
+  }
+```
+
+In the above schema the client will be notified whenever 
+a new user or new post is created.
