@@ -24,8 +24,10 @@ the first one Person and the second is Post.
 If a user wants to retrieve data or some fields of 
 the person model it could query the server using:
 ```
-  allPersons {
-    name
+  query{
+    allPersons {
+      name
+    }
   }
 ```
 What does that mean is that the client wants all persons
